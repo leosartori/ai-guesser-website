@@ -143,8 +143,8 @@ body {
   to   { transform: translateX(0); }
 }
 
-.track-left  { animation: scrollLeft  76s linear infinite; }
-.track-right { animation: scrollRight 60s linear infinite; }
+.track-left  { animation: scrollLeft  152s linear infinite; }
+.track-right { animation: scrollRight 120s linear infinite; }
 
 @media (prefers-reduced-motion: reduce) {
   .carousel-track { animation: none; }
