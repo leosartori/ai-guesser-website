@@ -9,6 +9,7 @@
   <meta property="og:description" content="Can you tell real photos from AI-generated ones? Fast rounds, daily streaks, zero accounts." />
   <meta property="og:type" content="website" />
   <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
 
@@ -47,7 +48,7 @@
         <div class="features-grid">
 
           <div class="feature-card">
-            <span class="feature-icon">🔍</span>
+            <i data-lucide="scan-eye" class="feature-icon"></i>
             <h3>Real vs AI</h3>
             <p>
               Curated real photographs from Pexels &amp; Unsplash go head-to-head
@@ -56,7 +57,7 @@
           </div>
 
           <div class="feature-card">
-            <span class="feature-icon">⚡</span>
+            <i data-lucide="zap" class="feature-icon"></i>
             <h3>Quick &amp; Addictive</h3>
             <p>
               Each round is a snap decision. Build streaks, beat your high score,
@@ -65,7 +66,7 @@
           </div>
 
           <div class="feature-card">
-            <span class="feature-icon">📱</span>
+            <i data-lucide="smartphone" class="feature-icon"></i>
             <h3>Play Anywhere</h3>
             <p>
               Available on iOS, Android, and directly in your browser.
@@ -74,7 +75,7 @@
           </div>
 
           <div class="feature-card">
-            <span class="feature-icon">🔒</span>
+            <i data-lucide="shield-check" class="feature-icon"></i>
             <h3>Privacy First</h3>
             <p>
               No account, no tracking, no ads. Your scores and streaks live
@@ -98,5 +99,6 @@
     </div>
   </footer>
 
+  <script>lucide.createIcons();</script>
 </body>
 </html>
