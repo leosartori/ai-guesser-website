@@ -24,49 +24,10 @@
 
     <section class="hero">
 
-      <!-- Infinite scrolling image carousel — purely decorative background -->
+      <!-- Carousel tracks — populated dynamically from data/images/manifest.json -->
       <div class="carousel-bg" aria-hidden="true">
-
-        <div class="carousel-track track-left">
-          <img class="carousel-img" src="data/images/dragon_00001.jpg" alt="">
-          <img class="carousel-img" src="data/images/dragon_00022.jpg" alt="">
-          <img class="carousel-img" src="data/images/dragon_00032.jpg" alt="">
-          <img class="carousel-img" src="data/images/dragon_00036.jpg" alt="">
-          <img class="carousel-img" src="data/images/dragon_00041.jpg" alt="">
-          <img class="carousel-img" src="data/images/dragon_00070.jpg" alt="">
-          <img class="carousel-img" src="data/images/dragon_00088.jpg" alt="">
-          <img class="carousel-img" src="data/images/image.png"        alt="">
-          <!-- duplicate for seamless loop -->
-          <img class="carousel-img" src="data/images/dragon_00001.jpg" alt="">
-          <img class="carousel-img" src="data/images/dragon_00022.jpg" alt="">
-          <img class="carousel-img" src="data/images/dragon_00032.jpg" alt="">
-          <img class="carousel-img" src="data/images/dragon_00036.jpg" alt="">
-          <img class="carousel-img" src="data/images/dragon_00041.jpg" alt="">
-          <img class="carousel-img" src="data/images/dragon_00070.jpg" alt="">
-          <img class="carousel-img" src="data/images/dragon_00088.jpg" alt="">
-          <img class="carousel-img" src="data/images/image.png"        alt="">
-        </div>
-
-        <div class="carousel-track track-right">
-          <img class="carousel-img" src="data/images/dragon_00041.jpg" alt="">
-          <img class="carousel-img" src="data/images/image.png"        alt="">
-          <img class="carousel-img" src="data/images/dragon_00088.jpg" alt="">
-          <img class="carousel-img" src="data/images/dragon_00001.jpg" alt="">
-          <img class="carousel-img" src="data/images/dragon_00070.jpg" alt="">
-          <img class="carousel-img" src="data/images/dragon_00022.jpg" alt="">
-          <img class="carousel-img" src="data/images/dragon_00036.jpg" alt="">
-          <img class="carousel-img" src="data/images/dragon_00032.jpg" alt="">
-          <!-- duplicate for seamless loop -->
-          <img class="carousel-img" src="data/images/dragon_00041.jpg" alt="">
-          <img class="carousel-img" src="data/images/image.png"        alt="">
-          <img class="carousel-img" src="data/images/dragon_00088.jpg" alt="">
-          <img class="carousel-img" src="data/images/dragon_00001.jpg" alt="">
-          <img class="carousel-img" src="data/images/dragon_00070.jpg" alt="">
-          <img class="carousel-img" src="data/images/dragon_00022.jpg" alt="">
-          <img class="carousel-img" src="data/images/dragon_00036.jpg" alt="">
-          <img class="carousel-img" src="data/images/dragon_00032.jpg" alt="">
-        </div>
-
+        <div class="carousel-track track-left"></div>
+        <div class="carousel-track track-right"></div>
       </div>
 
       <div class="container">
@@ -75,7 +36,7 @@
           Can you tell <span class="accent">real</span> from <span class="accent">AI</span>?
         </p>
         <p class="hero-sub">
-          AI Guesser is the quiz app that shows you one thing: images. Your challenge? Decide what’s real and what’s AI-generated. Fast rounds, daily streaks, zero fluff.
+          AI Guesser is the quiz app that shows you one thing: images. Your challenge? Decide what’s real and what’s AI-generated. Fast rounds, daily streaks, zero distractions.
         </p>
         <div class="cta-group">
           <!-- Replace # with your actual store / web app URLs -->
@@ -151,6 +112,25 @@
     </div>
   </footer>
 
+  <script>
+    // Populate carousel from manifest — edit data/images/manifest.json to add/remove images
+    (async () => {
+      try {
+        const { images } = await (await fetch('data/images/manifest.json')).json();
+        // Row 2: offset by half so the two rows show different images
+        const half = Math.floor(images.length / 2);
+        const row2 = [...images.slice(half), ...images.slice(0, half)];
+        const makeImgs = list =>
+          [...list, ...list]  // duplicate for seamless CSS loop
+            .map(f => `<img class="carousel-img" src="data/images/${encodeURIComponent(f)}" alt="">`)
+            .join('');
+        document.querySelector('.track-left').innerHTML  = makeImgs(images);
+        document.querySelector('.track-right').innerHTML = makeImgs(row2);
+      } catch (e) {
+        console.warn('Carousel: could not load manifest.json', e);
+      }
+    })();
+  </script>
   <script>lucide.createIcons();</script>
 </body>
 </html>
