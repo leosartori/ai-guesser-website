@@ -188,8 +188,8 @@ body {
 
 .hero-sub {
   font-size: 17px;
-  color: var(--text-muted);
-  max-width: 440px;
+  color: #cbd5e1;
+  max-width: 400px;
   margin: 0 auto 40px;
   line-height: 1.65;
 }
@@ -205,8 +205,6 @@ body {
 /* ── Store badges ── */
 .store-badge {
   display: inline-block;
-  border-radius: 8px;
-  overflow: hidden;
   transition: transform 0.15s, opacity 0.2s;
   line-height: 0;
 }
