@@ -208,7 +208,7 @@ body {
 }
 
 .store-badge img {
-  height: 52px;
+  height: 46px;
   width: auto;
   display: block;
 }
@@ -217,15 +217,15 @@ body {
 .btn-web {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  height: 52px;
-  padding: 0 22px;
+  gap: 8px;
+  height: 46px;
+  padding: 0 20px;
   background: var(--accent);
   color: #fff;
   text-decoration: none;
   border-radius: 9px;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 14px;
   letter-spacing: 0.2px;
   white-space: nowrap;
   transition: transform 0.15s, background 0.2s;
